@@ -2,6 +2,7 @@ package com.example.captionworld.controller;
 
 import android.app.Application;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
@@ -23,5 +24,9 @@ public class Appcontroller extends Application {
             mRequestQueue = Volley.newRequestQueue(getApplicationContext());
         }
         return mRequestQueue;
+    }
+
+    public <T> void addToRequestQueue(Request<T> req, String tag) {
+
     }
 }
