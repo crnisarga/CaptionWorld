@@ -9,6 +9,6 @@ public class QuoteData {
     ArrayList<Quote> quotearray = new ArrayList<>();
 
     public void getQuote() {
-
+        String url = "";
     }
 }
