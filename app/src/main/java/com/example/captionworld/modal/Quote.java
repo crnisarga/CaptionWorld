@@ -3,14 +3,14 @@ package com.example.captionworld.modal;
 public class Quote {
 
     private String quote;
-    private String scenario;
+    private String name;
 
     public String getScenario() {
-        return scenario;
+        return name;
     }
 
-    public void setScenario(String scenario) {
-        this.scenario = scenario;
+    public void setScenario(String name) {
+        this.name = name;
     }
 
     public String getQuote() {

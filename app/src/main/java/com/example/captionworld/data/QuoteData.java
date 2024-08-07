@@ -1,5 +1,7 @@
 package com.example.captionworld.data;
 
+import android.util.Log;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -18,7 +20,7 @@ public class QuoteData {
     ArrayList<Quote> quotearray = new ArrayList<>();
 
     public void getQuote() {
-        String url = "https://github.com/crnisarga/CaptionWorld/blob/master/Caption.txt";
+        String url = "https://github.com/crnisarga/CaptionWorld/blob/master/Caption.json";
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, new Response.Listener<JSONArray>() {
             @Override
@@ -29,8 +31,13 @@ public class QuoteData {
                          Quote quote = new Quote();
                          quote.setQuote(quoteObject.getString("quote"));
                          quote.setScenario(quoteObject.getString("name"));
+
+                         Log.d("mytag", quoteObject.getString("name"));
+
+                         quotearray.add(quote);
+
                      } catch (JSONException e) {
-                         throw new RuntimeException(e);
+                         e.printStackTrace();
                      }
                  }
             }
