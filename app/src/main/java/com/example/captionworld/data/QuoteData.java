@@ -23,6 +23,20 @@ public class QuoteData {
         Log.d("myTag","the meothod is called");
         String url = "https://github.com/pdichone/UIUX-Android-Course/blob/master/Quotes.json%20";
         Log.d("myTag","the url is validated");
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST,"http://example.com/feed.json",
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray jsonArray) {
+                        //Your code
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+
+                    }
+                });
        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
