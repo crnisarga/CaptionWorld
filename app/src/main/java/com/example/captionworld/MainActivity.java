@@ -15,8 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("myTag", "the control has not entered quote");
 
-        QuoteData Quote = new QuoteData();
-        Quote.getQuote();
+        new QuoteData().getQuote();
 
 
         Log.d("myTag", "the control has left quote");

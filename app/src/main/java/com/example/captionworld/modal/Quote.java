@@ -5,11 +5,10 @@ public class Quote {
     private String quote;
     private String name;
 
-    public String getScenario() {
+    public String getName() {
         return name;
     }
-
-    public void setScenario(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
