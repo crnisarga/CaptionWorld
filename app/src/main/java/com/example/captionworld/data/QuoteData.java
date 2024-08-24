@@ -26,23 +26,19 @@ public class QuoteData {
     ArrayList<Quote> quotearray = new ArrayList<>();
 
     public void getQuote() {
-        Log.d("myTag","the meothod is called");
-        String url = "https://raw.github.com/pdichone/UIUX-Android-Course/blob/master/Quotes.json%20";
+        String url = "https://raw.githubusercontent.com/crnisarga/CaptionWorld/master/Caption.json";
         url = url.replaceAll(" ", "%20");
-        Log.d("myTag","the url is validated");
        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, new Response.Listener<JSONArray>() {
 
             @Override
             public void onResponse(JSONArray response) {
-                Log.d("myTag", "hello this main entered is here");
                  for (int i = 0; i < response.length(); i++) {
-                     Log.d("myTag", "entered the loop also");
                      try {
-                         Log.d("myTag", "hello this comtrol is here");
                          JSONObject quoteObject = response.getJSONObject(i);
                          Quote quote = new Quote();
                          quote.setQuote(quoteObject.getString("quote"));
                          quote.setName(quoteObject.getString("name"));
+                         Log.d("Tag",quoteObject.getString("name"));
 
                          quotearray.add(quote);
 
