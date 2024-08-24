@@ -3,5 +3,9 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/atomic_age</item>
         <item>@font/inknut_antiqua_light</item>
+        <item>@font/nosifer</item>
+        <item>@font/nothing_you_could_do</item>
+        <item>@font/rubik_mono_one</item>
+        <item>@font/tilt_prism</item>
     </array>
 </resources>
