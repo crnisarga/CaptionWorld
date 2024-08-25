@@ -25,7 +25,7 @@ public class QuoteData {
 
     ArrayList<Quote> quotearray = new ArrayList<>();
 
-    public void getQuote() {
+    public void getQuote(QuoteListAsyncResponse callBack) {
         String url = "https://raw.githubusercontent.com/crnisarga/CaptionWorld/master/Caption.json";
         url = url.replaceAll(" ", "%20");
        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, new Response.Listener<JSONArray>() {
@@ -46,6 +46,8 @@ public class QuoteData {
                          e.printStackTrace();
                      }
                  }
+
+                 if (null != callBack) callBack.processeFinished(quotearray);
             }
         }, new Response.ErrorListener() {
             @Override

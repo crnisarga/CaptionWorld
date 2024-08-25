@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.captionworld.data.QuoteData;
+import com.example.captionworld.data.QuoteListAsyncResponse;
 import com.example.captionworld.data.QuoteViewPagerAdapter;
+import com.example.captionworld.modal.Quote;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +31,20 @@ public class MainActivity extends AppCompatActivity {
     private List<Fragment> getFragment() {
         List<Fragment> fragmentList = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++) {
-            QuoteFragment quoteFragment = QuoteFragment.newInstance("I am best","Nisarga");
-            fragmentList.add(quoteFragment);
-        }
+        new QuoteData().getQuote(new QuoteListAsyncResponse() {
+            @Override
+            public void processeFinished(ArrayList<Quote> quotes) {
+                for (int i = 0; i < quotes.size(); i++) {
+                    QuoteFragment quoteFragment = QuoteFragment.newInstance(
+                            quotes.get(i).getQuote(),
+                            quotes.get(i).getName()
+                    );
+                    fragmentList.add(quoteFragment);
+                }
+
+                quoteViewPagerAdapter.notifyDataSetChanged();
+            }
+        });
         return fragmentList;
     }
 }
