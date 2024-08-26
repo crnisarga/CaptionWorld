@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link QuoteFragment#newInstance} factory method to
@@ -50,8 +52,15 @@ public class QuoteFragment extends Fragment {
         String quote = getArguments().getString("quote");
         String author = getArguments().getString( "author");
 
+        int[] colour = new int[]{R.color.red,
+                R.color.white, R.color.pinkred, R.color.bluegreen, R.color.red, R.color.yellow,
+                R.color.green, R.color.orange, R.color.purple, R.color.lightred};
+
         quoteText.setText(quote);
         authorText.setText(author);
+
+        crdView.setBackgroundResource(getRandomQuote(colour));
+
         return quoteView;
     }
 
@@ -62,5 +71,13 @@ public class QuoteFragment extends Fragment {
         bundle.putString("author",author);
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    int getRandomQuote(int[] colourArray) {
+        int colour;
+        int quoteArraylength = colourArray.length;
+        int randomnum = ThreadLocalRandom.current().nextInt(quoteArraylength);
+        colour = colourArray[randomnum];
+        return colour;
     }
 }
